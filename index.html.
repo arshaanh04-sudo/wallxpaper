@@ -124,7 +124,7 @@ function searchWalls() {
   const q = document.getElementById("search").value.toLowerCase();
   showWalls(wallpapers.filter(w => w.name.toLowerCase().includes(q) || w.category.toLowerCase().includes(q)));
 }
-showWalls(wallpapers);
+document.getElementById("gallery").innerHTML = "TEST";
 </script>
 </body>
 </html>
