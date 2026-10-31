@@ -101,7 +101,12 @@ const wallpapers = [
   {name:"Supercar",category:"Cars",url:"https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600"},
   {name:"Night Car",category:"Cars",url:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600"},
   {name:"Space",category:"Space",url:"https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=600"},
-  {name:"Gaming Setup",category:"Gaming",url:"https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600"}
+  {name:"Gaming Setup",category:"Gaming",url:"https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600"},
+{
+  name: "Spider-Man",
+  category: "Gaming",
+  url: "spider man across 11476.png"
+}
 ];
 
 function showWalls(items) {
