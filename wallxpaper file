@@ -1,0 +1,125 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WALLXPAPER</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: #101014;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+header {
+  padding: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #191921;
+}
+.logo { font-size: 25px; font-weight: bold; color: #a78bfa; }
+input {
+  width: 90%;
+  padding: 13px;
+  margin: 18px 5%;
+  border: 1px solid #555;
+  border-radius: 12px;
+  background: #22222c;
+  color: white;
+}
+h2 { margin: 20px; }
+.categories {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 0 15px;
+}
+.categories button {
+  background: #292438;
+  color: white;
+  border: 0;
+  border-radius: 20px;
+  padding: 12px 18px;
+  white-space: nowrap;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  padding: 15px;
+}
+.wall {
+  position: relative;
+}
+.wall img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 13px;
+}
+.wall a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-top: 6px;
+}
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #aaa;
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">WALLXPAPER.</div>
+  <div>✦</div>
+</header>
+
+<input id="search" placeholder="Search wallpapers..." oninput="searchWalls()">
+
+<h2>Explore categories</h2>
+<div class="categories">
+  <button onclick="filterWalls('all')">All</button>
+  <button onclick="filterWalls('Gaming')">Gaming</button>
+  <button onclick="filterWalls('Nature')">Nature</button>
+  <button onclick="filterWalls('Cars')">Cars</button>
+  <button onclick="filterWalls('Space')">Space</button>
+</div>
+
+<h2>Discover wallpapers ✨</h2>
+<div class="gallery" id="gallery"></div>
+
+<footer>WALLXPAPER © 2026</footer>
+
+<script>
+const wallpapers = [
+  {name:"Mountain",category:"Nature",url:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600"},
+  {name:"Forest",category:"Nature",url:"https://images.unsplash.com/photo-1448375240586-882707db888b?w=600"},
+  {name:"Supercar",category:"Cars",url:"https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600"},
+  {name:"Night Car",category:"Cars",url:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=600"},
+  {name:"Space",category:"Space",url:"https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=600"},
+  {name:"Gaming Setup",category:"Gaming",url:"https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=600"}
+];
+
+function showWalls(items) {
+  document.getElementById("gallery").innerHTML = items.map(w => `
+    <div class="wall">
+      <img src="${w.url}" alt="${w.name}">
+      <a href="${w.url}" download target="_blank">⬇️ ${w.name}</a>
+    </div>
+  `).join("");
+}
+function filterWalls(category) {
+  showWalls(category === "all" ? wallpapers : wallpapers.filter(w => w.category === category));
+}
+function searchWalls() {
+  const q = document.getElementById("search").value.toLowerCase();
+  showWalls(wallpapers.filter(w => w.name.toLowerCase().includes(q) || w.category.toLowerCase().includes(q)));
+}
+showWalls(wallpapers);
+</script>
+</body>
+</html>
